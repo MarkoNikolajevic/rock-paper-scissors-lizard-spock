@@ -1,0 +1,47 @@
+.game-container
+  background-image: url('../../img/bg-pentagon.svg')
+  background-position: center center
+  background-repeat: no-repeat
+  background-size: 100% 
+  height: 100%
+  width: 100%
+  
+  .external-border
+    width: 96px
+    height: 96px
+    border-radius: 50%
+    display: flex
+    justify-content: center
+    align-items: center
+    cursor: pointer
+    box-shadow: inset 0 -5px rgba(0, 0, 0, 0.2)
+
+    .inner-content
+      width: 80px
+      height: 80px
+      background: #fff
+      border-radius: 50%
+      display: flex
+      justify-content: center
+      align-items: center
+      box-shadow: inset 0 5px 1px rgba(0, 0, 0, 0.2)
+  
+  #scissors
+    background: $scissorsColor
+    transform: translate(110%, 100%)
+
+  #paper
+    background: $paperColor
+    transform: translate(250%, 100%)
+
+  #spock
+    background: $spockColor
+    transform: translateX(-25%)
+
+  #rock
+    background: $rockColor
+    transform: translate(200%, 70%)
+
+  #lizard
+    background: $lizardColor
+    transform: translate(10%, -30%)
