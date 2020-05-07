@@ -1,3 +1,29 @@
 .modal-container
   display: none
   position: absolute
+  top: 0
+  left: 0
+  z-index: 666
+  background: #fff
+  width: 100%
+  height: 100%
+  justify-content: center
+  align-items: center
+
+  .modal-content
+    display: flex
+    flex-direction: column
+
+    .rules
+      font-size: 2rem
+      text-transform: uppercase
+      text-align: center
+
+    .close-modal-btn
+      border: none
+      width: 50px
+      height: 50px
+      background: transparent
+      align-self: center
+      margin-top: 4rem
+      cursor: pointer

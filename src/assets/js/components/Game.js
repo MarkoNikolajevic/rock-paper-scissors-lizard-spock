@@ -9,7 +9,6 @@ import spock from '../../img/icon-spock.svg';
 
 const Game = ({ score, setScore }) => {
   const [winner, setWinner] = useState('');
-  const [pickedImg, setPickedImg] = useState();
   const choices = ['scissors', 'paper', 'spock', 'rock', 'lizard'];
   let userChoice = undefined;
   let mainView = null;
