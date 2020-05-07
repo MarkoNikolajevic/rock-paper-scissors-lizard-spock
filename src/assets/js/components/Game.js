@@ -86,8 +86,9 @@ const Game = ({ score, setScore }) => {
   // updated choices on match view
   const updateChoice = (choiceElem, choice) => {
     const image = choiceElem.querySelector('img');
+    const choiceImg = require(`../../img/icon-${choice}.svg`);
     choiceElem.classList.add(choice);
-    image.src = choice;
+    image.src = choiceImg;
     image.alt = choice;
   };
 
