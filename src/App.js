@@ -7,7 +7,6 @@ import RulesModal from './assets/js/components/RulesModal';
 function App() {
   // score state
   const [score, setScore] = useState(0);
-  // game choice state
 
   // rules modal state
   const [rules, setRules] = useState(false);

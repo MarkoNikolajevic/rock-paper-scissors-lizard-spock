@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, useState, useRef } from 'react';
 
 import logo from '../../img/logo-bonus.svg';
 import paper from '../../img/icon-paper.svg';
@@ -8,10 +8,14 @@ import lizard from '../../img/icon-lizard.svg';
 import spock from '../../img/icon-spock.svg';
 
 const Game = ({ score, setScore }) => {
-  // const [choice, setChoice] = useState(undefined);
+  const [winner, setWinner] = useState('');
+  const [pickedImg, setPickedImg] = useState();
   const choices = ['scissors', 'paper', 'spock', 'rock', 'lizard'];
   let userChoice = undefined;
-  let punteggio = 0;
+  let mainView = null;
+  let gameView = null;
+  let userPicked = null;
+  let computerPicked = null;
 
   // computer choice
   const computerChoice = () => {
@@ -20,12 +24,18 @@ const Game = ({ score, setScore }) => {
 
   // add event for all choices
   useEffect(() => {
+    mainView = document.querySelector('.main-view');
+    gameView = document.querySelector('.match-view');
+    userPicked = document.querySelector('#user-picked');
+    computerPicked = document.querySelector('#computer-picked');
     const moves = document.querySelectorAll('.choices-options');
     moves.forEach((move) => {
       move.addEventListener('click', () => {
         userChoice = move.getAttribute('data-choice');
 
         checkWinner();
+        mainView.style.display = 'none';
+        gameView.style.display = 'flex';
       });
     });
   });
@@ -39,8 +49,12 @@ const Game = ({ score, setScore }) => {
   const checkWinner = () => {
     const computerSelected = computerChoice();
 
+    updateChoice(userPicked, userChoice);
+    updateChoice(computerPicked, computerSelected);
+
     if (userChoice === computerSelected) {
       // draw
+      setWinner('Draw');
     } else if (
       (userChoice === 'scissors' &&
         (computerSelected === 'paper' || computerSelected === 'lizard')) ||
@@ -55,10 +69,26 @@ const Game = ({ score, setScore }) => {
     ) {
       // user win
       updateScore(1);
+      setWinner('You win');
     } else {
       // user lose
       updateScore(-1);
+      setWinner('You lose');
     }
+  };
+
+  // play again
+  const playAgain = () => {
+    mainView.style.display = 'flex';
+    gameView.style.display = 'none';
+  };
+
+  // updated choices on match view
+  const updateChoice = (choiceElem, choice) => {
+    const image = choiceElem.querySelector('img');
+    choiceElem.classList.add(choice);
+    image.src = choice;
+    image.alt = choice;
   };
 
   return (
@@ -77,59 +107,70 @@ const Game = ({ score, setScore }) => {
 
       <div className='game-container'>
         <main className='main-view'>
-          <div
-            className='external-border choices-options'
-            id='scissors'
-            data-choice='scissors'
-          >
-            <div className='inner-content'>
-              <img src={scissors} alt='scissors' />
-            </div>
-          </div>
-          <div
-            className='external-border choices-options'
-            id='paper'
-            data-choice='paper'
-          >
-            <div className='inner-content'>
-              <img src={paper} alt='paper' />
-            </div>
-          </div>
-          <div
-            className='external-border choices-options'
-            id='spock'
+          <button
+            className='btn choices-options btn-spock spock'
             data-choice='spock'
           >
-            <div className='inner-content'>
+            <span className='btn-inner'>
               <img src={spock} alt='spock' />
-            </div>
-          </div>
-          <div
-            className='external-border choices-options'
-            id='rock'
-            data-choice='rock'
+            </span>
+          </button>
+          <button
+            className='btn choices-options btn-scissors scissors'
+            data-choice='scissors'
           >
-            <div className='inner-content'>
-              <img src={rock} alt='rock' />
-            </div>
-          </div>
-          <div
-            className='external-border choices-options'
-            id='lizard'
+            <span className='btn-inner'>
+              <img src={scissors} alt='scissors' />
+            </span>
+          </button>
+          <button
+            className='btn choices-options btn-paper paper'
+            data-choice='paper'
+          >
+            <span className='btn-inner'>
+              <img src={paper} alt='paper' />
+            </span>
+          </button>
+          <button
+            className='btn choices-options btn-lizard lizard'
             data-choice='lizard'
           >
-            <div className='inner-content'>
+            <span className='btn-inner'>
               <img src={lizard} alt='lizard' />
-            </div>
-          </div>
+            </span>
+          </button>
+          <button
+            className='btn choices-options btn-rock rock'
+            data-choice='rock'
+          >
+            <span className='btn-inner'>
+              <img src={rock} alt='rock' />
+            </span>
+          </button>
         </main>
 
         <div className='match-view'>
-          <div className='user-choice'></div>
-          <div className='computer-choice'></div>
-          <div className='result'>
-            <h3>You win</h3>
-            <button className='btn-replay'>Play again</button>
+          <div className='user-choice'>
+            <button className='btn' id='user-picked'>
+              <span className='btn-inner'>
+                <img src='' alt='alt text' />
+              </span>
+            </button>
+            <p>You picked</p>
+          </div>
+          <div className='computer-choice'>
+            <button className='btn' id='computer-picked'>
+              <span className='btn-inner'>
+                <img src='' alt='alt text' />
+              </span>
+            </button>
+            <p>The house picked</p>
+          </div>
+          <div className='result-wrapper'>
+            <h3 className='result'>{winner}</h3>
+            <button className='btn-replay' onClick={playAgain}>
+              Play again
+            </button>
           </div>
         </div>
       </div>

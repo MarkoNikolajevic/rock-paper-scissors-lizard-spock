@@ -3,50 +3,87 @@
   width: 100%
 
   .main-view
-    background-image: url('../../img/bg-pentagon.svg')
-    background-position: center center
-    background-repeat: no-repeat
-    background-size: 100% 
-  
-    .external-border
-      width: 96px
-      height: 96px
-      border-radius: 50%
-      display: flex
-      justify-content: center
-      align-items: center
-      cursor: pointer
-      box-shadow: inset 0 -5px rgba(0, 0, 0, 0.2)
+    display: flex
+    flex-wrap: wrap
+    justify-content: space-around
+    align-items: center
+    height: 80%
+    position: relative
 
-      .inner-content
+    &::before
+      background-image: url('../../img/bg-pentagon.svg')
+      background-position: center center
+      background-repeat: no-repeat
+      background-size: 100%
+      content: ''
+      width: 80%
+      height: 100%
+      position: absolute
+  
+  .btn
+    width: 96px
+    height: 96px
+    border-radius: 50%
+    box-shadow: inset 0 -5px rgba(0, 0, 0, 0.2)
+    border: none
+    cursor: pointer
+    z-index: 4
+
+    // &:active
+    //   transform: scale(0.9)
+
+    .btn-inner
         width: 80px
         height: 80px
         background: #fff
         border-radius: 50%
-        display: flex
+        display: inline-flex
         justify-content: center
         align-items: center
         box-shadow: inset 0 5px 1px rgba(0, 0, 0, 0.2)
     
-    #scissors
-      background: $scissorsColor
-      transform: translate(110%, 100%)
+  .scissors
+    background: $scissorsColor
 
-    #paper
-      background: $paperColor
-      transform: translate(250%, 100%)
+  .paper
+    background: $paperColor
 
-    #spock
-      background: $spockColor
-      transform: translateX(-25%)
+  .btn-paper
+    transform: translateY(75%)
 
-    #rock
-      background: $rockColor
-      transform: translate(200%, 70%)
+  .spock
+    background: $spockColor
 
-    #lizard
-      background: $lizardColor
-      transform: translate(10%, -30%)
+  .btn-spock
+    transform: translateY(75%)
+
+  .rock
+    background: $rockColor
+
+  .btn-rock
+    transform: translateY(20%)
+
+  .lizard
+    background: $lizardColor
+  
+  .btn-lizard
+    transform: translateY(20%)
   
   .match-view
     display: none
+    justify-content: space-around
+    align-items: center
+    flex-wrap: wrap
+    margin-top: 3rem
+
+    .user-choice,
+    .computer-choice
+      display: flex
+      flex-direction: column
+      justify-content: center
+      align-items: center  
+
+      p
+        text-transform: uppercase
+        font-weight: 700
+        letter-spacing: 2px
