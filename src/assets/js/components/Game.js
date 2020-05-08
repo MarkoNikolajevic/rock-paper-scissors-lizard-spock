@@ -7,7 +7,8 @@ import scissors from '../../img/icon-scissors.svg';
 import lizard from '../../img/icon-lizard.svg';
 import spock from '../../img/icon-spock.svg';
 
-const Game = ({ score, setScore }) => {
+const Game = () => {
+  const [score, setScore] = useState(0);
   const [winner, setWinner] = useState('');
   const choices = ['scissors', 'paper', 'spock', 'rock', 'lizard'];
   let userChoice = undefined;
@@ -85,6 +86,7 @@ const Game = ({ score, setScore }) => {
   // updated choices on match view
   const updateChoice = (choiceElem, choice) => {
     const image = choiceElem.querySelector('img');
+    // not the best to do but works
     const choiceImg = require(`../../img/icon-${choice}.svg`);
     choiceElem.classList.add(choice);
     image.src = choiceImg;

@@ -5,10 +5,8 @@ import close from '../../img/icon-close.svg';
 
 const RulesModal = ({ rules, setRules }) => {
   const modal = document.querySelector('.modal-container');
-  console.log(rules);
   if (rules) {
     modal.style.display = 'flex';
-    // setRules(true);
   }
 
   return (
