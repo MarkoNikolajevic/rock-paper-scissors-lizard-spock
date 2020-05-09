@@ -1,14 +1,15 @@
 .game-container
-  height: 100%
-  width: 100%
+  height: 305px
+  width: 311px
 
   .main-view
     display: flex
     flex-wrap: wrap
     justify-content: space-around
     align-items: center
-    height: 80%
+    height: 100%
     position: relative
+    margin-top: 2rem
 
     &::before
       background-image: url('../../img/bg-pentagon.svg')
@@ -16,7 +17,7 @@
       background-repeat: no-repeat
       background-size: 100%
       content: ''
-      width: 80%
+      width: 90%
       height: 100%
       position: absolute
   
@@ -45,29 +46,32 @@
   .scissors
     background: $scissorsColor
 
+  .btn-scissors
+    align-self: flex-start
+
   .paper
     background: $paperColor
 
   .btn-paper
-    transform: translateY(75%)
+    align-self: flex-end
 
   .spock
     background: $spockColor
 
   .btn-spock
-    transform: translateY(75%)
+    align-self: flex-end
 
   .rock
     background: $rockColor
 
   .btn-rock
-    transform: translateY(20%)
+    align-self: flex-end
 
   .lizard
     background: $lizardColor
   
   .btn-lizard
-    transform: translateY(20%)
+    align-self: flex-end
   
   .match-view
     display: none

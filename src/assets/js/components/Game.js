@@ -1,4 +1,4 @@
-import React, { Fragment, useEffect, useState, useRef } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 
 import logo from '../../img/logo-bonus.svg';
 import paper from '../../img/icon-paper.svg';
