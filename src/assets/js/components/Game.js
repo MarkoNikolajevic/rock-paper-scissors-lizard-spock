@@ -8,37 +8,36 @@ import lizard from '../../img/icon-lizard.svg';
 import spock from '../../img/icon-spock.svg';
 
 const Game = () => {
+  // const [userChoice, setUserChoice] = useState();
   const [score, setScore] = useState(0);
   const [winner, setWinner] = useState('');
+  const [mainView, setMainView] = useState();
+  const [gameView, setGameView] = useState();
   const choices = ['scissors', 'paper', 'spock', 'rock', 'lizard'];
   let userChoice = undefined;
-  let mainView = null;
-  let gameView = null;
-  let userPicked = null;
   let computerPicked = null;
+  let userPicked = null;
+
+  useEffect(() => {
+    setMainView(document.querySelector('.main-view'));
+    setGameView(document.querySelector('.game-view'));
+  }, []);
+
+  useEffect(() => {
+    computerPicked = document.querySelector('#computer-picked');
+    userPicked = document.querySelector('#user-picked');
+  });
 
   // computer choice
   const computerChoice = () => {
     return choices[Math.floor(Math.random() * choices.length)];
   };
 
-  // add event for all choices
-  useEffect(() => {
-    mainView = document.querySelector('.main-view');
-    gameView = document.querySelector('.match-view');
-    userPicked = document.querySelector('#user-picked');
-    computerPicked = document.querySelector('#computer-picked');
-    const moves = document.querySelectorAll('.choices-options');
-    moves.forEach((move) => {
-      move.addEventListener('click', () => {
-        userChoice = move.getAttribute('data-choice');
-
-        checkWinner();
-        mainView.style.display = 'none';
-        gameView.style.display = 'flex';
-      });
-    });
-  });
+  const getUserChoice = (event) => {
+    userChoice = event.target.getAttribute('data-choice');
+    console.log(userChoice);
+    checkWinner();
+  };
 
   // update score
   const updateScore = (value) => {
@@ -48,6 +47,8 @@ const Game = () => {
   // check winner
   const checkWinner = () => {
     const computerSelected = computerChoice();
+    mainView.style.display = 'none';
+    gameView.style.display = 'flex';
 
     updateChoice(userPicked, userChoice);
     updateChoice(computerPicked, computerSelected);
@@ -77,20 +78,23 @@ const Game = () => {
     }
   };
 
+  // update choice image
+  const updateChoice = (choiceEl, choice) => {
+    const image = choiceEl.querySelector('img');
+    const choiceImg = require(`../../img/icon-${choice}.svg`);
+
+    choiceEl.classList.add(choice, 'btn');
+    console.log(computerPicked);
+    image.src = choiceImg;
+    image.alt = choice;
+  };
+
   // play again
   const playAgain = () => {
     mainView.style.display = 'flex';
     gameView.style.display = 'none';
-  };
-
-  // updated choices on match view
-  const updateChoice = (choiceElem, choice) => {
-    const image = choiceElem.querySelector('img');
-    // not the best to do but works
-    const choiceImg = require(`../../img/icon-${choice}.svg`);
-    choiceElem.classList.add(choice);
-    image.src = choiceImg;
-    image.alt = choice;
+    computerPicked.className = 'cleanstate';
+    userPicked.className = 'cleanstate';
   };
 
   return (
@@ -109,53 +113,63 @@ const Game = () => {
 
       <div className='game-container'>
         <main className='main-view'>
-          <button
-            className='btn choices-options btn-spock spock'
-            data-choice='spock'
-          >
+          <button className='btn choices-options btn-spock spock'>
             <span className='btn-inner'>
-              <img src={spock} alt='spock' />
+              <img
+                src={spock}
+                alt='spock'
+                data-choice='spock'
+                onClick={getUserChoice}
+              />
             </span>
           </button>
-          <button
-            className='btn choices-options btn-scissors scissors'
-            data-choice='scissors'
-          >
+          <button className='btn choices-options btn-scissors scissors'>
             <span className='btn-inner'>
-              <img src={scissors} alt='scissors' />
+              <img
+                src={scissors}
+                alt='scissors'
+                data-choice='scissors'
+                onClick={getUserChoice}
+              />
             </span>
           </button>
-          <button
-            className='btn choices-options btn-paper paper'
-            data-choice='paper'
-          >
+          <button className='btn choices-options btn-paper paper'>
             <span className='btn-inner'>
-              <img src={paper} alt='paper' />
+              <img
+                src={paper}
+                alt='paper'
+                data-choice='paper'
+                onClick={getUserChoice}
+              />
             </span>
           </button>
-          <button
-            className='btn choices-options btn-lizard lizard'
-            data-choice='lizard'
-          >
+          <button className='btn choices-options btn-lizard lizard'>
             <span className='btn-inner'>
-              <img src={lizard} alt='lizard' />
+              <img
+                src={lizard}
+                alt='lizard'
+                data-choice='lizard'
+                onClick={getUserChoice}
+              />
             </span>
           </button>
-          <button
-            className='btn choices-options btn-rock rock'
-            data-choice='rock'
-          >
+          <button className='btn choices-options btn-rock rock'>
             <span className='btn-inner'>
-              <img src={rock} alt='rock' />
+              <img
+                src={rock}
+                alt='rock'
+                data-choice='rock'
+                onClick={getUserChoice}
+              />
             </span>
           </button>
         </main>
 
-        <div className='match-view'>
+        <div className='game-view'>
           <div className='user-choice'>
             <button className='btn' id='user-picked'>
               <span className='btn-inner'>
-                <img src='' alt='alt text' />
+                <img src='' alt={userChoice} />
               </span>
             </button>
             <p>You picked</p>
