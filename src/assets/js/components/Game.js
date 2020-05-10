@@ -169,7 +169,7 @@ const Game = () => {
           <div className='user-choice'>
             <button className='btn' id='user-picked'>
               <span className='btn-inner'>
-                <img src='' alt={userChoice} />
+                <img src='' alt='' />
               </span>
             </button>
             <p>You picked</p>
@@ -177,7 +177,7 @@ const Game = () => {
           <div className='computer-choice'>
             <button className='btn' id='computer-picked'>
               <span className='btn-inner'>
-                <img src='' alt='alt text' />
+                <img src='' alt='' />
               </span>
             </button>
             <p>The house picked</p>
