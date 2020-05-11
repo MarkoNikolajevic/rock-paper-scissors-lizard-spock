@@ -35,7 +35,6 @@ const Game = () => {
 
   const getUserChoice = (event) => {
     userChoice = event.target.getAttribute('data-choice');
-    console.log(userChoice);
     checkWinner();
   };
 
@@ -169,7 +168,7 @@ const Game = () => {
           <div className='user-choice'>
             <button className='btn' id='user-picked'>
               <span className='btn-inner'>
-                <img src='' alt='' />
+                <img src='#' alt='user choice' />
               </span>
             </button>
             <p>You picked</p>
@@ -177,7 +176,7 @@ const Game = () => {
           <div className='computer-choice'>
             <button className='btn' id='computer-picked'>
               <span className='btn-inner'>
-                <img src='' alt='' />
+                <img src='#' alt='computer choice' />
               </span>
             </button>
             <p>The house picked</p>

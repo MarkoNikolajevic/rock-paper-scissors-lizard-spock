@@ -112,29 +112,52 @@
       cursor: default
       transform: none
 
-@media screen and (min-width: 48px)
-  .btn
-    width: 130px
-    height: 130px
+@media screen and (min-width: 48rem)
+  .game-container
+    width: 500px
+    height: 490px
 
-    .btn-inner
-      width: 100px
-      height: 100px
+    .btn
+      width: 130px
+      height: 130px
+
+      .btn-inner
+        width: 100px
+        height: 100px
+
+    .game-view
+      .user-choice,
+      .computer-choice
+        .btn
+          width: 150px
+          height: 150px
+
+          .btn-inner
+            width: 125px
+            height: 125px
 
 @media screen and (min-width: 85rem)
   .game-container
-    width: 470px
-    height: 460px
+    width: 700px
+    display: flex
+    justify-content: center
 
-    .btn
-      width: 150px
-      height: 150px
+    .main-view
+      width: 470px
+      height: 460px
 
-      .btn-inner
-        width: 125px
-        height: 125px
+      .btn
+        width: 150px
+        height: 150px
+
+        .btn-inner
+          width: 125px
+          height: 125px
 
     .game-view
+      .computer-choice
+        order: 1
+        
       .user-choice,
       .computer-choice
         .btn
@@ -147,3 +170,7 @@
 
         p
           font-size: 24px
+          order: -1
+
+      .result-wrapper
+        margin: 0 1rem
