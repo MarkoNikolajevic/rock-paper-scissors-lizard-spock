@@ -1,4 +1,5 @@
 .game-container
+  margin-top: 2rem
   height: 305px
   width: 315px
 
@@ -9,7 +10,6 @@
     align-items: center
     height: 100%
     position: relative
-    margin-top: 2rem
 
     &::before
       background-image: url('../../img/bg-pentagon.svg')
@@ -22,8 +22,8 @@
       position: absolute
   
   .btn
-    width: 96px
-    height: 96px
+    width: 100px
+    height: 100px
     border-radius: 50%
     box-shadow: inset 0 -5px rgba(0, 0, 0, 0.2)
     border: none
@@ -35,8 +35,8 @@
       transform: scale(0.9)
 
     .btn-inner
-        width: 80px
-        height: 80px
+        width: 75px
+        height: 75px
         background: #fff
         border-radius: 50%
         display: inline-flex
@@ -44,6 +44,9 @@
         align-items: center
         margin: auto
         box-shadow: inset 0 5px 1px rgba(0, 0, 0, 0.2)
+
+        img
+          width: 60%
     
   .scissors
     background: $scissorsColor
@@ -90,7 +93,14 @@
       flex-direction: column
       justify-content: center
       align-items: center  
-      margin-left: 20px
+
+      .btn
+        width: 130px
+        height: 130px
+
+        .btn-inner
+          width: 100px
+          height: 100px
 
       p
         text-transform: uppercase
@@ -101,3 +111,25 @@
     #user-picked
       cursor: default
       transform: none
+
+@media screen and (min-width: 48px)
+  .btn
+    width: 130px
+    height: 130px
+
+    .btn-inner
+      width: 100px
+      height: 100px
+
+// @media screen and (min-width: 85rem)
+//   .game-container
+//     width: 470px
+//     height: 460px
+
+//     .btn
+//       width: 150px
+//       height: 150px
+
+//       .btn-inner
+//         width: 125px
+//         height: 125px
