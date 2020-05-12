@@ -17,7 +17,7 @@ function App() {
           Rules
         </button>
       </div>
-      <RulesModal rules={rules} setRules={setRules} />
+      {rules && <RulesModal rules={rules} setRules={setRules} />}
     </div>
   );
 }

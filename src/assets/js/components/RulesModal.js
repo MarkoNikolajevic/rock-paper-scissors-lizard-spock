@@ -4,10 +4,10 @@ import rulesImg from '../../img/image-rules-bonus.svg';
 import close from '../../img/icon-close.svg';
 
 const RulesModal = ({ rules, setRules }) => {
-  const modal = document.querySelector('.modal-container');
-  if (rules) {
-    modal.style.display = 'flex';
-  }
+  // const modal = document.querySelector('.modal-container');
+  // if (rules) {
+  //   modal.style.display = 'flex';
+  // }
 
   return (
     <div className='modal-container'>
@@ -17,8 +17,7 @@ const RulesModal = ({ rules, setRules }) => {
         <button
           className='close-modal-btn'
           onClick={() => {
-            modal.style.display = 'none';
-            setRules(!rules);
+            setRules(false);
           }}
         >
           <img src={close} alt='close button' />
