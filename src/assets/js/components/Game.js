@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import Button from './Button';
 
 import logo from '../../img/logo-bonus.svg';
 import paper from '../../img/icon-paper.svg';
@@ -112,56 +113,15 @@ const Game = () => {
 
       <div className='game-container'>
         <main className='main-view'>
-          <button className='btn choices-options btn-spock spock'>
-            <span className='btn-inner'>
-              <img
-                src={spock}
-                alt='spock'
-                data-choice='spock'
-                onClick={getUserChoice}
-              />
-            </span>
-          </button>
-          <button className='btn choices-options btn-scissors scissors'>
-            <span className='btn-inner'>
-              <img
-                src={scissors}
-                alt='scissors'
-                data-choice='scissors'
-                onClick={getUserChoice}
-              />
-            </span>
-          </button>
-          <button className='btn choices-options btn-paper paper'>
-            <span className='btn-inner'>
-              <img
-                src={paper}
-                alt='paper'
-                data-choice='paper'
-                onClick={getUserChoice}
-              />
-            </span>
-          </button>
-          <button className='btn choices-options btn-lizard lizard'>
-            <span className='btn-inner'>
-              <img
-                src={lizard}
-                alt='lizard'
-                data-choice='lizard'
-                onClick={getUserChoice}
-              />
-            </span>
-          </button>
-          <button className='btn choices-options btn-rock rock'>
-            <span className='btn-inner'>
-              <img
-                src={rock}
-                alt='rock'
-                data-choice='rock'
-                onClick={getUserChoice}
-              />
-            </span>
-          </button>
+          <Button choice='spock' image={spock} handleClick={getUserChoice} />
+          <Button
+            choice='scissors'
+            image={scissors}
+            handleClick={getUserChoice}
+          />
+          <Button choice='paper' image={paper} handleClick={getUserChoice} />
+          <Button choice='lizard' image={lizard} handleClick={getUserChoice} />
+          <Button choice='rock' image={rock} handleClick={getUserChoice} />
         </main>
 
         <div className='game-view'>
