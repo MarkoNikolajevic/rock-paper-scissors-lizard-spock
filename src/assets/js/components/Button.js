@@ -1,11 +1,16 @@
 import React, { useState } from 'react';
 
+import { motion } from 'framer-motion';
+
 const Button = (props) => {
   const [choice] = useState(props.choice);
   const [image] = useState(props.image);
 
   return (
-    <button className={`btn choices-options btn-${choice} ${choice}`}>
+    <motion.button
+      className={`btn choices-options btn-${choice} ${choice}`}
+      whileHover={{ scale: 1.1 }}
+    >
       <span className='btn-inner'>
         <img
           src={`${image}`}
@@ -14,7 +19,7 @@ const Button = (props) => {
           onClick={props.handleClick}
         />
       </span>
-    </button>
+    </motion.button>
   );
 };
 
