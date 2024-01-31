@@ -18,7 +18,8 @@ export default {
       colors: {
         dark: 'hsl(229, 25%, 31%)',
         score: 'hsl(229, 64%, 46%)',
-        header: 'hsl(217, 16%, 45%)'
+        header: 'hsl(217, 16%, 45%)',
+        red: '#DB2E4D'
       },
       backgroundImage: {
         scissors:

@@ -5,8 +5,9 @@
     "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "module": "ESNext",
     "skipLibCheck": true,
+    "baseUrl": "./", // This must be specified if "paths" is.
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"] // All imports starting with "@" will be looked up in "src" folder
     },
 
     /* Bundler mode */
